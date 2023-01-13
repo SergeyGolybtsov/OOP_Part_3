@@ -16,7 +16,7 @@ public class Main {
             Bus bus = new Bus("Bus brand № " + i, "Car model № " + i, 4.0, driverD);
 
             printInfo(car);
-            car.setBodyType(Car.bodyTypes.COUPE);
+            car.setBodyType(Car.bodyTypes.CUV);
             car.printType();
             printInfo(bus);
             bus.setCapacity(Bus.Capacity.EXTRA_SMALL);
