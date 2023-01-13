@@ -1,9 +1,47 @@
 package transport;
 public class Bus extends Transport<DriverD>{
+    public enum Capacity {
+        EXTRA_SMALL(null, 10),
+        SMALL(null, 25),
+        MEDIUM(40, 50),
+        LARGE(60, 80),
+        EXTRA_LARGE(100, 120);
 
+        final Integer minCapacity;
+        final Integer maxCapacity;
+
+        Capacity(Integer minCapacity, Integer maxCapacity) {
+            this.minCapacity = minCapacity;
+            this.maxCapacity = maxCapacity;
+        }
+
+        @Override
+        public String toString() {
+            return String.format("Вместимость: %s %s", (minCapacity != null ? "от " + minCapacity + " человек" : ""),
+                    maxCapacity != null ? "до " + maxCapacity + " человек" : "");
+        }
+    }
+    private Capacity capacity;
     public Bus(String brand, String model, double engineVolume, DriverD driver) {
         super(brand, model, engineVolume, driver);
     }
+
+    @Override
+    public void printType() {
+        if (capacity == null) {
+            System.out.println("Данных по транспортному средству недостаточно");
+        } else {
+            System.out.println(capacity);
+            }
+        }
+
+        public Capacity getCapacity() {
+            return capacity;
+        }
+
+        public void setCapacity(Capacity capacity) {
+            this.capacity = capacity;
+        }
 
     @Override
     public void startMove() {

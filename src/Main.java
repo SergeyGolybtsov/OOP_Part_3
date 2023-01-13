@@ -9,19 +9,29 @@ public class Main {
 
             DriverC driverC = new DriverC("Driver № " + i, true, 7 + i);
 
-            trucks trucks = new trucks("Car brand № " + i, "Car model № " + i, 4.5, driverC);
+            Truck truck = new Truck("Truck brand № " + i, "Car model № " + i, 4.5, driverC);
 
             DriverD driverD = new DriverD("Driver № " + i, true, 10 + i);
 
-            Bus bus = new Bus("Car brand № " + i, "Car model № " + i, 4.0, driverD);
+            Bus bus = new Bus("Bus brand № " + i, "Car model № " + i, 4.0, driverD);
 
             printInfo(car);
+            car.setBodyType(Car.bodyTypes.COUPE);
+            car.printType();
             printInfo(bus);
-            printInfo(trucks);
-        }
+            bus.setCapacity(Bus.Capacity.EXTRA_SMALL);
+            bus.printType();
+            printInfo(truck);
+            truck.setCarrying(Truck.Carrying.N3);
+            truck.printType();
 
+
+
+        }
     }
+
+
     public static void printInfo(Transport<?> transport) {
-        System.out.println("Водитель " + transport.getDriver().getName() + " зправляет автомобилем "+ transport.getBrand() +" и будет участвовать в заезде");
+        System.out.println("Водитель " + transport.getDriver().getName() + " зправляет автомобиль "+ transport.getBrand() + " и будет участвовать в заезде");
     }
 }
