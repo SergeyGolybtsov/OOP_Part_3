@@ -1,5 +1,6 @@
 package transport;
-public class Bus extends Transport<DriverD>{
+
+public class Bus extends Transport<DriverD> {
     public enum Capacity {
         EXTRA_SMALL(null, 10),
         SMALL(null, 25),
@@ -7,8 +8,8 @@ public class Bus extends Transport<DriverD>{
         LARGE(60, 80),
         EXTRA_LARGE(100, 120);
 
-        final Integer minCapacity;
-        final Integer maxCapacity;
+        private Integer minCapacity;
+        private Integer maxCapacity;
 
         Capacity(Integer minCapacity, Integer maxCapacity) {
             this.minCapacity = minCapacity;
@@ -21,7 +22,9 @@ public class Bus extends Transport<DriverD>{
                     maxCapacity != null ? "до " + maxCapacity + " человек" : "");
         }
     }
+
     private Capacity capacity;
+
     public Bus(String brand, String model, double engineVolume, DriverD driver) {
         super(brand, model, engineVolume, driver);
     }
@@ -36,16 +39,16 @@ public class Bus extends Transport<DriverD>{
             System.out.println("Данных по транспортному средству недостаточно");
         } else {
             System.out.println(capacity);
-            }
         }
+    }
 
-        public Capacity getCapacity() {
-            return capacity;
-        }
+    public Capacity getCapacity() {
+        return capacity;
+    }
 
-        public void setCapacity(Capacity capacity) {
-            this.capacity = capacity;
-        }
+    public void setCapacity(Capacity capacity) {
+        this.capacity = capacity;
+    }
 
     @Override
     public void startMove() {
@@ -66,7 +69,7 @@ public class Bus extends Transport<DriverD>{
     public void theBestCircleTime() {
         int min = 100;
         int max = 150;
-        int bestTime =(int) (min + (max - min) * Math.random());
+        int bestTime = (int) (min + (max - min) * Math.random());
         System.out.println("Лучшее время круга для автобуса в минутах " + bestTime);
     }
 
@@ -74,7 +77,7 @@ public class Bus extends Transport<DriverD>{
     public void maxSpeed() {
         int min = 80;
         int max = 120;
-        int maxSpeed =(int) (min + (max - min) * Math.random());
+        int maxSpeed = (int) (min + (max - min) * Math.random());
         System.out.println("Максимальная скорость для автобуса " + maxSpeed);
     }
 }

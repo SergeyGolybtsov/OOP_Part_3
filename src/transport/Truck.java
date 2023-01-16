@@ -1,13 +1,13 @@
 package transport;
 
-public class Truck extends  Transport<DriverC> {
+public class Truck extends Transport<DriverC> {
     public enum Carrying {
         N1(null, 3.5),
         N2(3.5, 12.0),
         N3(12.0, null);
 
-        final Double minValue;
-        final Double maxValue;
+        private Double minValue;
+        private Double maxValue;
 
         Carrying(Double minValue, Double maxValue) {
             this.minValue = minValue;
@@ -22,7 +22,8 @@ public class Truck extends  Transport<DriverC> {
     }
 
     private Carrying carrying;
-    public Truck (String brand, String model, double engineVolume, DriverC driver) {
+
+    public Truck(String brand, String model, double engineVolume, DriverC driver) {
         super(brand, model, engineVolume, driver);
     }
 
@@ -39,7 +40,7 @@ public class Truck extends  Transport<DriverC> {
 
     @Override
     public void printType() {
-        if (carrying == null){
+        if (carrying == null) {
             System.out.println("Данных по транспортному средству недостаточно");
         } else {
             System.out.println(carrying);
@@ -53,6 +54,7 @@ public class Truck extends  Transport<DriverC> {
     public void setCarrying(Carrying carrying) {
         this.carrying = carrying;
     }
+
     @Override
     public void startMove() {
         System.out.println("Грузовик марки " + getBrand() + " начал движение");
@@ -72,7 +74,7 @@ public class Truck extends  Transport<DriverC> {
     public void theBestCircleTime() {
         int min = 90;
         int max = 140;
-        int bestTime =(int) (min + (max - min) * Math.random());
+        int bestTime = (int) (min + (max - min) * Math.random());
         System.out.println("Лучшее время круга для грузовика в минутах " + bestTime);
     }
 
@@ -80,7 +82,7 @@ public class Truck extends  Transport<DriverC> {
     public void maxSpeed() {
         int min = 90;
         int max = 130;
-        int maxSpeed =(int) (min + (max - min) * Math.random());
+        int maxSpeed = (int) (min + (max - min) * Math.random());
         System.out.println("Максимальная скорость для грузовика " + maxSpeed);
     }
 }

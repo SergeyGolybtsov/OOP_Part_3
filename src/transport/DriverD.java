@@ -1,6 +1,6 @@
 package transport;
 
-public class DriverD extends Driver{
+public class DriverD extends Driver {
     public DriverD(String name, boolean hasDriverLicense, int experienceInYears) {
         super(name, hasDriverLicense, experienceInYears);
     }

@@ -1,6 +1,6 @@
 package transport;
 
-public abstract class Transport<T extends Driver> implements Competing{
+public abstract class Transport<T extends Driver> implements Competing {
 
     private final String brand;
     private final String model;
@@ -40,6 +40,7 @@ public abstract class Transport<T extends Driver> implements Competing{
     public double getEngineVolume() {
         return engineVolume;
     }
+
     public void setEngineVolume(double engineVolume) {
         if (engineVolume <= 0) {
             engineVolume = 1.6;
@@ -48,10 +49,13 @@ public abstract class Transport<T extends Driver> implements Competing{
     }
 
     public abstract void passDiagnostics();
+
     public abstract void printType();
 
     public abstract void startMove();
+
     public abstract void finishMove();
+
     public void printInfo() {
         System.out.println("Водитель " + driver.getName() + " управляет автомобилем " + getBrand() + " и будет участвовать в заезде");
     }
@@ -64,6 +68,4 @@ public abstract class Transport<T extends Driver> implements Competing{
                 ", обьем двигателя=" + engineVolume +
                 '}';
     }
-
-
 }
