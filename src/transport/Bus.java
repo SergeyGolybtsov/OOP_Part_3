@@ -27,6 +27,10 @@ public class Bus extends Transport<DriverD>{
     }
 
     @Override
+    public void passDiagnostics() {
+    }
+
+    @Override
     public void printType() {
         if (capacity == null) {
             System.out.println("Данных по транспортному средству недостаточно");

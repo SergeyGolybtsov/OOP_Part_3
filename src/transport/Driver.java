@@ -26,11 +26,9 @@ public abstract class Driver {
     public String getName() {
         return name;
     }
-
     public boolean isHasDriverLicense() {
         return hasDriverLicense;
     }
-
     public int getExperienceInYears() {
         return experienceInYears;
     }

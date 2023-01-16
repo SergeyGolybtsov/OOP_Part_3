@@ -1,8 +1,6 @@
 package transport;
 
 public class Car extends Transport<DriverB>{
-
-
     public enum bodyTypes {
         SEDAN("седан"),
         HATCHBACK("хетчбек  "),
@@ -23,6 +21,7 @@ public class Car extends Transport<DriverB>{
             return String.format("Тип кузова: " + translate);
         }
     }
+
     public void printType() {
         if (bodyType == null) {
             System.out.println("Данных по транспортному средству недостаточно");
@@ -33,6 +32,17 @@ public class Car extends Transport<DriverB>{
     private bodyTypes bodyType;
     public Car(String brand, String model, double engineVolume, DriverB driver) {
         super(brand, model, engineVolume, driver);
+    }
+
+    @Override
+    public void passDiagnostics() {
+        if (!getDriver().isHasDriverLicense()) {
+            System.out.println("Необходимо указать тип прав!");
+        } else if (getDriver().getClass() != DriverB.class) {
+            System.out.println("Не верный тип прав водителя");
+        } else {
+            throw new RuntimeException();
+        }
     }
     public bodyTypes getBodyType() {
         return bodyType;

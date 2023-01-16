@@ -20,9 +20,21 @@ public class Truck extends  Transport<DriverC> {
                     maxValue != null ? "до " + maxValue + " тонн" : "");
         }
     }
+
     private Carrying carrying;
     public Truck (String brand, String model, double engineVolume, DriverC driver) {
         super(brand, model, engineVolume, driver);
+    }
+
+    @Override
+    public void passDiagnostics() {
+        if (!getDriver().isHasDriverLicense()) {
+            System.out.println("Необходимо указать тип прав!");
+        } else if (getDriver().getClass() != DriverC.class) {
+            System.out.println("Не верный тип прав водителя");
+        } else {
+            throw new RuntimeException();
+        }
     }
 
     @Override
