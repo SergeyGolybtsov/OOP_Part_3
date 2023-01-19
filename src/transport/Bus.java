@@ -8,8 +8,8 @@ public class Bus extends Transport<DriverD> {
         LARGE(60, 80),
         EXTRA_LARGE(100, 120);
 
-        private Integer minCapacity;
-        private Integer maxCapacity;
+        final Integer minCapacity;
+        final Integer maxCapacity;
 
         Capacity(Integer minCapacity, Integer maxCapacity) {
             this.minCapacity = minCapacity;

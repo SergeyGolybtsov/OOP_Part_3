@@ -6,8 +6,8 @@ public class Truck extends Transport<DriverC> {
         N2(3.5, 12.0),
         N3(12.0, null);
 
-        private Double minValue;
-        private Double maxValue;
+        final Double minValue;
+        final Double maxValue;
 
         Carrying(Double minValue, Double maxValue) {
             this.minValue = minValue;

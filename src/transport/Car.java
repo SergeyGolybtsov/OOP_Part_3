@@ -1,5 +1,7 @@
 package transport;
 
+import java.lang.invoke.WrongMethodTypeException;
+
 public class Car extends Transport<DriverB> {
     public enum bodyTypes {
         SEDAN("седан"),
@@ -37,14 +39,19 @@ public class Car extends Transport<DriverB> {
         super(brand, model, engineVolume, driver);
     }
 
+    public class CanFindLicense extends Exception {
+        public CanFindLicense(String errorMessage) {
+            super(errorMessage);
+        }
+    }
     @Override
-    public void passDiagnostics() {
-        if (!getDriver().isHasDriverLicense()) {
-            System.out.println("Необходимо указать тип прав!");
-        } else if (getDriver().getClass() != DriverB.class) {
-            System.out.println("Не верный тип прав водителя");
-        } else {
-            throw new RuntimeException();
+    public void passDiagnostics(){
+        try{
+            if (!getDriver().isHasDriverLicense()) {
+                throw new CanFindLicense("У водителя отсутствуют водительские права!");
+            }
+        } catch (CanFindLicense e) {
+            throw new RuntimeException(e);
         }
     }
 

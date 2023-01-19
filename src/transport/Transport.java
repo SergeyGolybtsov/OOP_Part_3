@@ -48,7 +48,7 @@ public abstract class Transport<T extends Driver> implements Competing {
         this.engineVolume = engineVolume;
     }
 
-    public abstract void passDiagnostics();
+    public abstract void passDiagnostics() throws Car.CanFindLicense;
 
     public abstract void printType();
 
