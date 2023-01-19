@@ -26,15 +26,19 @@ public class Truck extends Transport<DriverC> {
     public Truck(String brand, String model, double engineVolume, DriverC driver) {
         super(brand, model, engineVolume, driver);
     }
-
+    public class CanFindLicense extends Exception {
+        public CanFindLicense(String errorMessage) {
+            super(errorMessage);
+        }
+    }
     @Override
     public void passDiagnostics() {
-        if (!getDriver().isHasDriverLicense()) {
-            System.out.println("Необходимо указать тип прав!");
-        } else if (getDriver().getClass() != DriverC.class) {
-            System.out.println("Не верный тип прав водителя");
-        } else {
-            throw new RuntimeException();
+        try{
+            if (!getDriver().isHasDriverLicense()) {
+                throw new Truck.CanFindLicense("У водителя отсутствуют водительские права!");
+            }
+        } catch (CanFindLicense e) {
+            throw new RuntimeException(e);
         }
     }
 
