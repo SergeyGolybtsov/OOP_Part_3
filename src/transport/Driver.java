@@ -23,9 +23,11 @@ public abstract class Driver {
         this.experienceInYears = experienceInYears;
     }
 
+
     public String getName() {
         return name;
     }
+
     public boolean isHasDriverLicense() {
         return hasDriverLicense;
     }
@@ -35,6 +37,8 @@ public abstract class Driver {
     }
 
     public abstract void startMove();
+
     public abstract void finishMove();
+
     public abstract void refill();
 }

@@ -5,6 +5,7 @@ public class DriverC extends Driver {
         super(name, hasDriverLicense, experienceInYears);
     }
 
+
     public void startMove() {
         System.out.println("Водитель категории C " + getName() + " начал движение");
     }

@@ -5,6 +5,7 @@ public class DriverD extends Driver {
         super(name, hasDriverLicense, experienceInYears);
     }
 
+
     public void startMove() {
         System.out.println("Водитель категории D " + getName() + " начал движение");
     }

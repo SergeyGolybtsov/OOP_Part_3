@@ -6,6 +6,7 @@ public class Truck extends Transport<DriverC> {
         N2(3.5, 12.0),
         N3(12.0, null);
 
+
         final Double minValue;
         final Double maxValue;
 

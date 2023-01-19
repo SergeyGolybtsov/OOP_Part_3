@@ -16,6 +16,7 @@ public class Bus extends Transport<DriverD> {
             this.maxCapacity = maxCapacity;
         }
 
+
         @Override
         public String toString() {
             return String.format("Вместимость: %s %s", (minCapacity != null ? "от " + minCapacity + " человек" : ""),

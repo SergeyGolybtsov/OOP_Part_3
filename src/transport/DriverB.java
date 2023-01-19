@@ -5,6 +5,7 @@ public class DriverB extends Driver {
         super(name, hasDriverLicense, experienceInYears);
     }
 
+
     @Override
     public void startMove() {
         System.out.println("Водитель категории B " + getName() + " начал движение");

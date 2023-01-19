@@ -44,9 +44,10 @@ public class Car extends Transport<DriverB> {
             super(errorMessage);
         }
     }
+
     @Override
-    public void passDiagnostics(){
-        try{
+    public void passDiagnostics() {
+        try {
             if (!getDriver().isHasDriverLicense()) {
                 throw new CanFindLicense("У водителя отсутствуют водительские права!");
             }
