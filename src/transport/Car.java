@@ -46,15 +46,14 @@ public class Car extends Transport<DriverB> {
     }
 
     @Override
-    public void passDiagnostics() {
-        try {
-            if (!getDriver().isHasDriverLicense()) {
-                throw new CanFindLicense("У водителя отсутствуют водительские права!");
-            }
-        } catch (CanFindLicense e) {
-            throw new RuntimeException(e);
+    public void passDiagnostics() throws CanFindLicense {
+        if (!getDriver().isHasDriverLicense()) {
+            throw new CanFindLicense("У водителя отсутствуют водительские права!");
+        } else {
+            System.out.printf("Диагностика легкового автомобиля - %s %s успешно пройдена\n", getBrand(), getModel());
         }
     }
+
 
     public bodyTypes getBodyType() {
         return bodyType;

@@ -32,6 +32,8 @@ public class Bus extends Transport<DriverD> {
 
     @Override
     public void passDiagnostics() {
+        System.out.println("Автобусы не подлежат диагностике!");
+
     }
 
     @Override

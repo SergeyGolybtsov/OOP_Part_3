@@ -1,5 +1,7 @@
 package transport;
 
+import exception.CanFindLicense;
+
 public class Truck extends Transport<DriverC> {
     public enum Carrying {
         N1(null, 3.5),
@@ -27,20 +29,14 @@ public class Truck extends Transport<DriverC> {
     public Truck(String brand, String model, double engineVolume, DriverC driver) {
         super(brand, model, engineVolume, driver);
     }
-    public class CanFindLicense extends Exception {
-        public CanFindLicense(String errorMessage) {
-            super(errorMessage);
-        }
-    }
     @Override
-    public void passDiagnostics() {
-        try{
-            if (!getDriver().isHasDriverLicense()) {
-                throw new Truck.CanFindLicense("У водителя отсутствуют водительские права!");
-            }
-        } catch (CanFindLicense e) {
-            throw new RuntimeException(e);
+    public void passDiagnostics() throws CanFindLicense {
+        if (!getDriver().isHasDriverLicense()) {
+            throw new CanFindLicense("У водителя отсутствуют водительские права!");
+        } else {
+            System.out.printf("Диагностика легкового автомобиля - %s %s успешно пройдена\n", getBrand(), getModel());
         }
+
     }
 
     @Override

@@ -26,13 +26,12 @@ public class Main {
             truck.setCarrying(Truck.Carrying.N3);
             truck.printType();
             try {
-                truck.passDiagnostics();
+                car.passDiagnostics();
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
         }
     }
-
 
     public static void printInfo(Transport<?> transport) {
         System.out.println("Водитель " + transport.getDriver().getName() + " зправляет автомобиль " + transport.getBrand() + " и будет участвовать в заезде");

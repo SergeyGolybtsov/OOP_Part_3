@@ -1,5 +1,7 @@
 package transport;
 
+import exception.CanFindLicense;
+
 public abstract class Transport<T extends Driver> implements Competing {
 
     private final String brand;
@@ -49,7 +51,7 @@ public abstract class Transport<T extends Driver> implements Competing {
     }
 
 
-    public abstract void passDiagnostics() throws Car.CanFindLicense;
+    public abstract void passDiagnostics() throws Car.CanFindLicense, CanFindLicense;
 
     public abstract void printType();
 
