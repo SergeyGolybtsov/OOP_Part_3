@@ -1,7 +1,4 @@
 package transport;
-
-import java.lang.invoke.WrongMethodTypeException;
-
 public class Car extends Transport<DriverB> {
     public enum bodyTypes {
         SEDAN("седан"),

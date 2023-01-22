@@ -1,5 +1,5 @@
+import mechanics.Mechanic;
 import transport.*;
-import transport.Car.CanFindLicense;
 
 public class Main {
     public static void main(String[] args) {
@@ -19,17 +19,41 @@ public class Main {
             printInfo(car);
             car.setBodyType(Car.bodyTypes.CUV);
             car.printType();
-            printInfo(bus);
-            bus.setCapacity(Bus.Capacity.EXTRA_SMALL);
-            bus.printType();
-            printInfo(truck);
-            truck.setCarrying(Truck.Carrying.N3);
-            truck.printType();
             try {
                 car.passDiagnostics();
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
+            Mechanic mechanicCar = new Mechanic("Magomed", "FastRepair");
+            mechanicCar.setTransport(car);
+            mechanicCar.fixCar();
+            mechanicCar.maintenance();
+
+            printInfo(bus);
+            bus.setCapacity(Bus.Capacity.EXTRA_SMALL);
+            bus.printType();
+            try {
+                bus.passDiagnostics();
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+            Mechanic mechanicBus = new Mechanic("Kit", "Kitti");
+            mechanicBus.setTransport(bus);
+            mechanicBus.fixCar();
+            mechanicBus.maintenance();
+
+            printInfo(truck);
+            truck.setCarrying(Truck.Carrying.N3);
+            truck.printType();
+            try {
+                truck.passDiagnostics();
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+            Mechanic mechanicTruck = new Mechanic("Gorilla", "Semechka");
+            mechanicTruck.setTransport(truck);
+            mechanicTruck.fixCar();
+            mechanicTruck.maintenance();
         }
     }
 
