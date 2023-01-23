@@ -4,7 +4,7 @@ import transport.Transport;
 public class Mechanic<T extends Transport> {
     private final String fullName;
     private final String company;
-    private T transport;
+    private T transport;//Не совсем понял как присвоить этот параметр в метод починки и проверки((((
 
 
     public Mechanic(String fullName, String company) {

@@ -1,7 +1,17 @@
 import mechanics.Mechanic;
 import transport.*;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+
+import static javax.swing.UIManager.put;
+
 public class Main {
+    public static HashSet<Driver> drivers = new HashSet<>();
+    public static HashSet<Transport<?>> transports = new HashSet<>();
+    public static HashMap<Transport<?>, HashSet<Mechanic<?>>> mechanics = new HashMap<>();
     public static void main(String[] args) {
         for (int i = 1; i <= 4; i++) {
             DriverB driverB = new DriverB("Driver № " + i, false, 5 + i);
@@ -16,6 +26,9 @@ public class Main {
 
             Bus bus = new Bus("Bus brand № " + i, "Car model № " + i, 4.0, driverD);
 
+            Mechanic<Car> carMechanic = new Mechanic<>("Проверка", "Проверка");
+            Mechanic<Car> carMechanic2 = new Mechanic<>("Проверка", "Проверка");
+
             printInfo(car);
             car.setBodyType(Car.bodyTypes.CUV);
             car.printType();
@@ -28,6 +41,10 @@ public class Main {
             mechanicCar.setTransport(car);
             mechanicCar.fixCar();
             mechanicCar.maintenance();
+            System.out.println("__________________________________________");
+
+            putMechanics(car,mechanicCar,carMechanic,carMechanic2);
+
 
             printInfo(bus);
             bus.setCapacity(Bus.Capacity.EXTRA_SMALL);
@@ -54,7 +71,13 @@ public class Main {
             mechanicTruck.setTransport(truck);
             mechanicTruck.fixCar();
             mechanicTruck.maintenance();
+
+
         }
+    }
+    public static void putMechanics(Transport<?> transport, Mechanic<?>...mechanics) {
+        HashSet<Mechanic<?>> mechanics1 = new HashSet<>(List.of(mechanics));
+        Main.mechanics.put(transport, mechanics1);
     }
 
     public static void printInfo(Transport<?> transport) {

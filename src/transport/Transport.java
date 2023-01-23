@@ -9,7 +9,7 @@ public abstract class Transport<T extends Driver> implements Competing {
     private final String model;
     private double engineVolume;
     private T driver;
-    private List<Mechanic<?>> mechanics = new ArrayList<>();
+    //private List<Mechanic<?>> mechanics = new ArrayList<>();
     public Transport(String brand, String model, double engineVolume, T driver) {
         if (driver != null) {
             this.driver = driver;
@@ -25,16 +25,16 @@ public abstract class Transport<T extends Driver> implements Competing {
         setEngineVolume(engineVolume);
         setDriver(driver);
     }
-    public List<Mechanic<?>> getMechanics() {
-        return mechanics;
-    }
-    public void addMechanic(Mechanic<?> mechanic) {
-        mechanics.add(mechanic);
-    }
-    public void showMechanicsInfo() {
-        System.out.println("Список всех механиков автомобиля " + brand + ":");
-        mechanics.forEach(System.out :: println);
-    }
+   // public List<Mechanic<?>> getMechanics() {
+   //     return mechanics;
+   // }
+   // public void addMechanic(Mechanic<?> mechanic) {
+    //    mechanics.add(mechanic);
+   // }
+   // public void showMechanicsInfo() {
+     //   System.out.println("Список всех механиков автомобиля " + brand + ":");
+     //   mechanics.forEach(System.out :: println);
+   // }
     public T getDriver() {
         return driver;
     }
@@ -63,6 +63,7 @@ public abstract class Transport<T extends Driver> implements Competing {
     public void printInfo() {
         System.out.println("Водитель " + driver.getName() + " управляет автомобилем " + getBrand() + " и будет участвовать в заезде");
     }
+
     @Override
     public String toString() {
         return "Transport{" +
@@ -70,7 +71,6 @@ public abstract class Transport<T extends Driver> implements Competing {
                 ", model='" + model + '\'' +
                 ", engineVolume=" + engineVolume +
                 ", driver=" + driver +
-                ", mechanics=" + mechanics +
                 '}';
     }
 }
