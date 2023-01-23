@@ -1,17 +1,14 @@
 import mechanics.Mechanic;
 import transport.*;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 import static javax.swing.UIManager.put;
 
 public class Main {
-    public static HashSet<Driver> drivers = new HashSet<>();
-    public static HashSet<Transport<?>> transports = new HashSet<>();
-    public static HashMap<Transport<?>, HashSet<Mechanic<?>>> mechanics = new HashMap<>();
+    public static Set<Driver> drivers = new HashSet<>();
+    public static Set<Transport<?>> transports = new HashSet<>();
+    public static Map<Transport<?>, Set<Mechanic<?>>> mechanics = new HashMap<>();
     public static void main(String[] args) {
         for (int i = 1; i <= 4; i++) {
             DriverB driverB = new DriverB("Driver № " + i, false, 5 + i);
@@ -76,7 +73,7 @@ public class Main {
         }
     }
     public static void putMechanics(Transport<?> transport, Mechanic<?>...mechanics) {
-        HashSet<Mechanic<?>> mechanics1 = new HashSet<>(List.of(mechanics));
+        Set<Mechanic<?>> mechanics1 = new HashSet<>(List.of(mechanics));
         Main.mechanics.put(transport, mechanics1);
     }
 
