@@ -4,6 +4,8 @@ import exception.CanFindLicense;
 import mechanics.Mechanic;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+
 public abstract class Transport<T extends Driver> implements Competing {
     private final String brand;
     private final String model;
@@ -25,7 +27,8 @@ public abstract class Transport<T extends Driver> implements Competing {
         setEngineVolume(engineVolume);
         setDriver(driver);
     }
-   // public List<Mechanic<?>> getMechanics() {
+
+    // public List<Mechanic<?>> getMechanics() {
    //     return mechanics;
    // }
    // public void addMechanic(Mechanic<?> mechanic) {
@@ -62,6 +65,19 @@ public abstract class Transport<T extends Driver> implements Competing {
     public abstract void finishMove();
     public void printInfo() {
         System.out.println("Водитель " + driver.getName() + " управляет автомобилем " + getBrand() + " и будет участвовать в заезде");
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Transport<?> transport = (Transport<?>) o;
+        return Double.compare(transport.engineVolume, engineVolume) == 0 && Objects.equals(brand, transport.brand) && Objects.equals(model, transport.model) && Objects.equals(driver, transport.driver);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(brand, model, engineVolume, driver);
     }
 
     @Override
