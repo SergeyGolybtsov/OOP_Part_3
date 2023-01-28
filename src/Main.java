@@ -9,24 +9,51 @@ public class Main {
     public static Set<Driver> drivers = new HashSet<>();
     public static Set<Transport<?>> transports = new HashSet<>();
     public static Map<Transport<?>, Set<Mechanic<?>>> mechanics = new HashMap<>();
+
+
+
     public static void main(String[] args) {
-        for (int i = 1; i <= 4; i++) {
-            DriverB driverB = new DriverB("Driver № " + i, false, 5 + i);
+       // for (int i = 1; i <= 4; i++) {
+            DriverB driverB = new DriverB("Driver №1 ", false, 5);
 
-            Car car = new Car("Car brand № " + i, "Car model № " + i, 1.6, driverB);
+            Car car = new Car("Car brand №1 ", "Car model №1 ", 1.6, driverB);
+            Car car2 = new Car("Car brand №1 ", "Car model №1 ", 1.6, driverB);
 
-            DriverC driverC = new DriverC("Driver № " + i, false, 7 + i);
+            DriverC driverC = new DriverC("Driver №2 ", false, 7);
 
-            Truck truck = new Truck("Truck brand № " + i, "Car model № " + i, 4.5, driverC);
+            Truck truck = new Truck("Truck brand №2 ", "Car model №2 ", 4.5, driverC);
 
-            DriverD driverD = new DriverD("Driver № " + i, true, 10 + i);
+            DriverD driverD = new DriverD("Driver №3 ", true, 10);
 
-            Bus bus = new Bus("Bus brand № " + i, "Car model № " + i, 4.0, driverD);
+            Bus bus = new Bus("Bus brand №3 ", "Car model №3 ", 4.0, driverD);
 
-            Mechanic<Car> carMechanic = new Mechanic<>("Проверка", "Проверка");
-            Mechanic<Car> carMechanic2 = new Mechanic<>("Проверка", "Проверка");
+            transports.add(car);
+            transports.add(car2);
+            transports.add(truck);
 
-            printInfo(car);
+            DriverB bDriver = car.getDriver();
+            DriverC cDriver = truck.getDriver();
+            drivers.add(bDriver);
+            drivers.add(cDriver);
+
+            Mechanic<Car> carMechanic = new Mechanic<>("Иван", "Крестный");
+            Mechanic<Car> carMechanic2 = new Mechanic<>("Игорь", "Дядя");
+            Mechanic<Car> carMechanic3 = new Mechanic<>("Женя", "Знакомый");
+            Mechanic<Truck> truckMechanic = new Mechanic<>("Васька", "Мой Кот");
+
+            putMechanics(car, carMechanic, carMechanic2, carMechanic3);
+            putMechanics(truck, truckMechanic);
+
+            System.out.println(transports);
+            System.out.println(mechanics.get(car));
+            System.out.println(mechanics.get(truck));
+
+            Iterator<Driver> iter = drivers.iterator();
+            while (iter.hasNext()) {
+                System.out.println(iter.next());
+            }
+
+          /*  printInfo(car);
             car.setBodyType(Car.bodyTypes.CUV);
             car.printType();
             try {
@@ -34,8 +61,8 @@ public class Main {
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
-            Mechanic mechanicCar = new Mechanic("Magomed", "FastRepair");
-            mechanicCar.setTransport(car);
+
+            mechanic.setTransport(car);
             mechanicCar.fixCar();
             mechanicCar.maintenance();
             System.out.println("__________________________________________");
@@ -51,7 +78,7 @@ public class Main {
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
-            Mechanic mechanicBus = new Mechanic("Kit", "Kitti");
+
             mechanicBus.setTransport(bus);
             mechanicBus.fixCar();
             mechanicBus.maintenance();
@@ -64,14 +91,12 @@ public class Main {
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
-            Mechanic mechanicTruck = new Mechanic("Gorilla", "Semechka");
+
             mechanicTruck.setTransport(truck);
             mechanicTruck.fixCar();
-            mechanicTruck.maintenance();
-
-
-        }
+            mechanicTruck.maintenance();*/
     }
+
     public static void putMechanics(Transport<?> transport, Mechanic<?>...mechanics) {
         Set<Mechanic<?>> mechanics1 = new HashSet<>(List.of(mechanics));
         Main.mechanics.put(transport, mechanics1);
