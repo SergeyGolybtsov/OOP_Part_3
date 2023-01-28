@@ -52,7 +52,6 @@ public class Main {
             while (iter.hasNext()) {
                 System.out.println(iter.next());
             }
-
           /*  printInfo(car);
             car.setBodyType(Car.bodyTypes.CUV);
             car.printType();
